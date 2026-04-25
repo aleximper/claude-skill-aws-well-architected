@@ -1,94 +1,94 @@
 # Claude Code Skill — AWS Well-Architected Framework
 
-Skill para [Claude Code](https://claude.com/claude-code) que le entrega a Claude una referencia completa y estructurada del **AWS Well-Architected Framework**: los 6 pilares, los design principles, el Shared Responsibility Model, el catálogo de lenses y el proceso de Well-Architected Review (WAR).
+A skill for [Claude Code](https://claude.com/claude-code) that gives Claude a complete, structured reference to the **AWS Well-Architected Framework**: the 6 pillars, the design principles, the Shared Responsibility Model, the lenses catalog, and the Well-Architected Review (WAR) process.
 
-Úsalo cuando estés diseñando, revisando u optimizando cualquier workload en AWS.
+Use it whenever you are designing, reviewing, or optimizing any workload on AWS.
 
-## Qué contiene
+## What it contains
 
 ```
 aws-well-architected/
-├── SKILL.md                                 Entry point ligero (índice + decision matrix)
+├── SKILL.md                                 Lightweight entry point (index + decision matrix)
 └── references/
-    ├── 01-design-principles.md              General Design Principles cross-pillar
+    ├── 01-design-principles.md              Cross-pillar General Design Principles
     ├── 02-shared-responsibility.md          Shared Responsibility Model
-    ├── 03-operational-excellence.md         Pilar OPS (OPS01–OPS11)
-    ├── 04-security.md                       Pilar SEC (SEC01–SEC11)
-    ├── 05-reliability.md                    Pilar REL (REL01–REL13) + RTO/RPO + estrategias DR
-    ├── 06-performance-efficiency.md         Pilar PERF (PERF01–PERF05)
-    ├── 07-cost-optimization.md              Pilar COST (COST01–COST11) + cheatsheet de pricing models
-    ├── 08-sustainability.md                 Pilar SUS (SUS01–SUS06)
-    ├── 09-lenses-catalog.md                 19 lenses oficiales de AWS (Serverless, SaaS, ML, GenAI, FSI…)
-    └── 10-wa-tool-and-review.md             WA Tool + proceso WAR + refresh de Nov 2024
+    ├── 03-operational-excellence.md         OPS pillar (OPS01–OPS11)
+    ├── 04-security.md                       SEC pillar (SEC01–SEC11)
+    ├── 05-reliability.md                    REL pillar (REL01–REL13) + RTO/RPO + DR strategies
+    ├── 06-performance-efficiency.md         PERF pillar (PERF01–PERF05)
+    ├── 07-cost-optimization.md              COST pillar (COST01–COST11) + pricing models cheatsheet
+    ├── 08-sustainability.md                 SUS pillar (SUS01–SUS06)
+    ├── 09-lenses-catalog.md                 19 official AWS lenses (Serverless, SaaS, ML, GenAI, FSI…)
+    └── 10-wa-tool-and-review.md             WA Tool + WAR process + Nov 2024 refresh
 ```
 
-Cada archivo de pilar contiene la definición oficial de AWS, los design principles, las best practice areas con sus códigos de pregunta (ej. `OPS01..OPS11`, `SEC01..SEC11`, `REL01..REL13`), las best practices por pregunta, los servicios AWS clave, los anti-patterns más comunes, un review checklist de 12 a 15 ítems y URLs directas a la documentación oficial.
+Each pillar reference file contains the official AWS definition, the design principles, the best practice areas with their question codes (e.g. `OPS01..OPS11`, `SEC01..SEC11`, `REL01..REL13`), the best practices per question, the key AWS services, the most common anti-patterns, a 12–15 item review checklist, and direct URLs to the official documentation.
 
-El contenido refleja el **refresh oficial del 6 de noviembre de 2024** (100% de OPS, SEC, PERF, COST, SUS y ~79% de REL actualizados).
+The content reflects the **official refresh of November 6, 2024** (100% of OPS, SEC, PERF, COST, SUS and ~79% of REL updated).
 
-> El contenido del skill está en inglés a propósito: coincide con la terminología canónica de AWS, mantiene la fidelidad de los nombres de los principios y BPs, y mejora el matching de keywords cuando Claude decide cargarlo.
+> The skill content is intentionally in English: it matches AWS's canonical terminology, preserves the exact names of principles and BPs, and improves keyword matching when Claude decides to load it.
 
-## Instalación
+## Installation
 
-### Global (recomendado)
+### Global (recommended)
 
-Instálalo una sola vez y queda disponible en todas tus sesiones de Claude Code:
+Install it once and have it available across every Claude Code session:
 
 ```bash
 git clone https://github.com/aleximper/claude-skill-aws-well-architected.git \
   ~/.claude/skills/aws-well-architected
 ```
 
-Para actualizarlo más adelante:
+To update later:
 
 ```bash
 cd ~/.claude/skills/aws-well-architected && git pull
 ```
 
-### Por proyecto
+### Per project
 
-Si prefieres tenerlo solo en un repo específico:
+If you prefer to keep it scoped to a specific repo:
 
 ```bash
 git clone https://github.com/aleximper/claude-skill-aws-well-architected.git \
   .claude/skills/aws-well-architected
 ```
 
-## Cómo se activa
+## How it activates
 
-Claude carga el skill automáticamente cuando la conversación involucra revisión de arquitectura AWS, Well-Architected Reviews, los seis pilares, AWS best practices, HRIs/MRIs o trade-offs de arquitectura en AWS. También puedes invocarlo de forma explícita con `/aws-well-architected` (según la versión de Claude Code).
+Claude loads the skill automatically whenever the conversation involves AWS architecture review, Well-Architected Reviews, the six pillars, AWS best practices, HRIs/MRIs, or AWS architecture trade-offs. You can also invoke it explicitly with `/aws-well-architected` (depending on your Claude Code version).
 
-`SKILL.md` es el entry point ligero que se carga al contexto. Funciona como índice de los archivos más profundos en `references/` — Claude lee solo lo relevante para mantener la ventana de contexto pequeña.
+`SKILL.md` is the lightweight entry point loaded into context. It works as an index for the deeper files in `references/` — Claude reads only what is relevant to keep the context window small.
 
-## Ejemplos de prompts que activan el skill
+## Example prompts that trigger the skill
 
-- "Revisa este stack de Terraform contra el AWS Well-Architected Framework."
-- "Estoy diseñando un SaaS multi-tenant nuevo en AWS — ¿qué lenses debería aplicar y qué exige el pilar SEC?"
-- "Guíame en un Well-Architected Review para un workload Lambda + DynamoDB."
-- "¿Cuál es la diferencia entre Pilot Light y Warm Standby como estrategias de DR?"
-- "Identifica HRIs en mi arquitectura actual EC2 + RDS desde la perspectiva del pilar Reliability."
+- "Review this Terraform stack against the AWS Well-Architected Framework."
+- "I'm designing a new multi-tenant SaaS on AWS — which lenses should I apply and what does the SEC pillar require?"
+- "Walk me through a Well-Architected Review for a Lambda + DynamoDB workload."
+- "What's the difference between Pilot Light and Warm Standby as DR strategies?"
+- "Identify HRIs in my current EC2 + RDS architecture from the Reliability pillar's perspective."
 
-## Fuentes y disclaimer
+## Sources and disclaimer
 
-Todo el contenido se destila desde la documentación oficial de AWS. La fuente canónica y siempre actualizada sigue siendo la documentación de AWS:
+All content is distilled from the official AWS documentation. The canonical, always up-to-date source remains the AWS docs themselves:
 
 - Framework: <https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html>
 - Lens Catalog: <https://aws.amazon.com/architecture/well-architected/lenses/>
 - WA Tool: <https://aws.amazon.com/well-architected-tool/>
 
-Cada archivo en `references/` termina con una sección `## References` apuntando a las páginas oficiales que resume. Cuando tengas dudas, valida contra la documentación viva de AWS — el framework evoluciona continuamente.
+Each file under `references/` ends with a `## References` section pointing to the official pages it summarizes. When in doubt, validate against the live AWS documentation — the framework evolves continuously.
 
-Este proyecto **no está afiliado, respaldado ni patrocinado por Amazon Web Services**. AWS, el logo de Powered by AWS y todos los nombres de servicios de AWS son marcas registradas de Amazon.com, Inc. o sus afiliadas.
+This project is **not affiliated with, endorsed by, or sponsored by Amazon Web Services**. AWS, the Powered by AWS logo, and all AWS service names are trademarks of Amazon.com, Inc. or its affiliates.
 
-## Contribuciones
+## Contributing
 
-Issues y PRs son bienvenidos. Contribuciones especialmente útiles:
+Issues and PRs are welcome. Especially helpful contributions:
 
-- Actualizaciones cuando AWS publica un refresh del framework
-- Nuevos lenses agregados al AWS Lens Catalog
-- Correcciones a IDs de BPs o URLs de documentación de AWS que hayan cambiado
-- Traducciones a otros idiomas
+- Updates whenever AWS publishes a framework refresh
+- New lenses added to the AWS Lens Catalog
+- Corrections to BP IDs or AWS documentation URLs that have changed
+- Translations to other languages
 
-## Licencia
+## License
 
 [MIT](LICENSE) © 2026 Jhon Ortiz
