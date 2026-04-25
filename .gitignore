@@ -1,0 +1,33 @@
+# OS
+.DS_Store
+Thumbs.db
+.Spotlight-V100
+.Trashes
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# Claude Code local artifacts (not part of the skill itself)
+.claude/
+*.local.json
+*.local.md
+
+# Logs and temp
+*.log
+*.tmp
+*.bak
+
+# Python (if any helper scripts get added later)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node (if any tooling gets added later)
+node_modules/
